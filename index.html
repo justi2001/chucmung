@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="vi" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chúc mừng 8/3</title>
+
+<link rel="shortcut icon" href="./rose.png">
+<link rel="stylesheet" href="https://use.typekit.net/eqx3jwb.css">
+<link rel="stylesheet" type="text/css" href="./style.css">
+
+<style>
+
+/* LOVE heartbeat */
+.content__title span{
+animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat{
+0%{transform:scale(1)}
+25%{transform:scale(1.1)}
+50%{transform:scale(1)}
+75%{transform:scale(1.15)}
+100%{transform:scale(1)}
+}
+
+/* Flower falling */
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(360deg);
+}
+}
+
+/* Heart animation */
+@keyframes heartFloat{
+0%{
+transform:translateY(0) scale(1);
+opacity:1;
+}
+100%{
+transform:translateY(-120px) scale(1.6);
+opacity:0;
+}
+}
+
+/* Hover image */
+.grid__item-img{
+transition: all 0.6s ease;
+border-radius:15px;
+}
+
+.grid__item-img:hover{
+transform:scale(1.15) rotate(2deg);
+box-shadow:0 20px 40px rgba(255,0,100,0.5);
+}
+
+</style>
+
+</head>
+
+<body class="demo-1 loading">
+
+<main>
+
+<div class="message">
+Please view this demo on a desktop to see the effect.
+</div>
+
+<div class="frame"></div>
+
+<div class="content">
+
+<div class="grid">
+
+<div class="grid__item pos-2"><div class="grid__item-img" style="background-image:url(./img/img1.png);"></div></div>
+<div class="grid__item pos-3"><div class="grid__item-img" style="background-image:url(./img/img3.jpg);"></div></div>
+<div class="grid__item pos-4"><div class="grid__item-img" style="background-image:url(./img/img4.jpg);"></div></div>
+<div class="grid__item pos-1"><div class="grid__item-img" style="background-image:url(./img/img2.jpg);"></div></div>
+<div class="grid__item pos-5"><div class="grid__item-img" style="background-image:url(./img/img5.jpg);"></div></div>
+<div class="grid__item pos-6"><div class="grid__item-img" style="background-image:url(./img/img6.jpg);"></div></div>
+<div class="grid__item pos-7"><div class="grid__item-img" style="background-image:url(./img/img7.jpg);"></div></div>
+<div class="grid__item pos-8"><div class="grid__item-img" style="background-image:url(./img/img8.jpg);"></div></div>
+<div class="grid__item pos-9"><div class="grid__item-img" style="background-image:url(./img/img9.jpg);"></div></div>
+<div class="grid__item pos-10"><div class="grid__item-img" style="background-image:url(./img/img10.png);"></div></div>
+
+</div>
+
+<h2 class="content__title no-select">
+<span>Love</span>
+</h2>
+
+<h2 class="content__title no-select">
+<span class="content__title-sub">
+Chúc em 8/3 xinh đẹp như ảnh trên mạng
+</span>
+</h2>
+
+</div>
+</main>
+
+<!-- Cursor -->
+<svg class="cursor" width="80" height="80" viewBox="0 0 80 80">
+<circle class="cursor__inner" cx="40" cy="40" r="20"></circle>
+</svg>
+
+<!-- Nhạc nền -->
+<audio autoplay loop>
+<source src="music.mp3" type="audio/mp3">
+</audio>
+
+<script src="./script.js"></script>
+
+<script>
+
+/* Flower falling */
+function createFlower(){
+const flower=document.createElement("div");
+
+flower.innerHTML="🌸";
+flower.style.position="fixed";
+flower.style.left=Math.random()*window.innerWidth+"px";
+flower.style.top="-20px";
+flower.style.fontSize=Math.random()*20+20+"px";
+flower.style.pointerEvents="none";
+flower.style.zIndex="9999";
+flower.style.animation="fall linear";
+
+const duration=Math.random()*5+5;
+flower.style.animationDuration=duration+"s";
+
+document.body.appendChild(flower);
+
+setTimeout(()=>{
+flower.remove();
+},duration*1000);
+}
+
+setInterval(createFlower,300);
+
+
+/* Click heart */
+document.addEventListener("click",function(e){
+
+const heart=document.createElement("div");
+
+heart.innerHTML="❤️";
+heart.style.position="fixed";
+heart.style.left=e.clientX+"px";
+heart.style.top=e.clientY+"px";
+heart.style.fontSize="24px";
+heart.style.pointerEvents="none";
+heart.style.zIndex="9999";
+heart.style.animation="heartFloat 2s ease-out forwards";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),2000);
+
+});
+
+
+/* Sparkle mouse */
+document.addEventListener("mousemove",function(e){
+
+const sparkle=document.createElement("div");
+
+sparkle.innerHTML="✨";
+sparkle.style.position="fixed";
+sparkle.style.left=e.clientX+"px";
+sparkle.style.top=e.clientY+"px";
+sparkle.style.fontSize="10px";
+sparkle.style.pointerEvents="none";
+sparkle.style.opacity="0.8";
+sparkle.style.zIndex="9999";
+
+document.body.appendChild(sparkle);
+
+setTimeout(()=>sparkle.remove(),400);
+
+});
+
+</script>
+
+</body>
+</html>
